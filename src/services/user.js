@@ -2,7 +2,7 @@
 const { findUser, createUser } = require("../repositories/user");
 const InternalServerError = require("../utils/internalServerError");
 const { generateOtp, verifyOtp, storeOTP ,sendOTP} = require("../validation/emailValidation");
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const veryfied = {
 };
