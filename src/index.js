@@ -39,4 +39,5 @@ app.use('/auth', authRouter);
 app.listen(PORT,async(req, res)=>{
     console.log(`Server started at server ${PORT}` )
     await connectDB();
+    
 });
