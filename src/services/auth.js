@@ -1,5 +1,5 @@
 const { findUser } = require("../repositories/user")
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {JWT_EXPIRY, JWT_SECRET} = require('../config/serviceConfig');
 const InternalServerError = require("../utils/internalServerError");
