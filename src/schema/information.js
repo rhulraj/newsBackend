@@ -20,6 +20,9 @@ const Schema = mongoose.Schema({
     },
     body2:{
         type: String
+    },
+    body3:{
+        type :String
     }
 
 
