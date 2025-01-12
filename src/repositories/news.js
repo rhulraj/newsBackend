@@ -42,11 +42,14 @@ async function fetchInternationalNews(){
     }
 }
 
-async function fetchDataById(id){
+async function fetchDataByUrl(url){
     try{
-        const response = await news.findById(id);
+        
+        const response = await news.findOne({url});
+        
         return response;
     }catch(error){
+        
         throw new InternalServerError();
     }
 }
@@ -63,6 +66,6 @@ module.exports = {
     fetchLatestNews,
     fetchTopNews,
     fetchInternationalNews,
-    fetchDataById,
+    fetchDataByUrl,
     deleteById
 }

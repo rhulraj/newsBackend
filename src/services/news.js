@@ -1,18 +1,35 @@
-const { createInfo,  fetchDataById, deleteById, fetchLatestNews, fetchTopNews, fetchInternationalNews } = require("../repositories/news");
+const { createInfo,   deleteById, fetchLatestNews, fetchTopNews, fetchInternationalNews, fetchDataByUrl } = require("../repositories/news");
 const cloudinary = require('../config/cloudinaryConfig');
 const InternalServerError = require("../utils/internalServerError");
 const notFoundError = require("../utils/notFoundError");
-const fs = require('fs/promises')
+const fs = require('fs/promises');
+
 
 
 async function createContent(data, files){
 
     try{
+       
+        if(!data.url){
+            return {status :400, message: "url is required"}
+        }
+        const url = data.url
+        
+        const findInformation  = await fetchDataByUrl(url)
+       
+        
+        if(findInformation){
+            for(const element of images) {
+                const {path} = element;
+                await fs.unlink(process.cwd() + "/" + path);
+       }
+       return {status :400, message : "url is already exist" }
+    }
         const images = files;
         const cloudinaryFunc = async(image)=>{
             return await cloudinary.uploader.upload(image);
         }
-        console.log(images)
+       
         if(images){
         for(const element of images) {
             const {path} = element;
@@ -75,7 +92,7 @@ async function getInternationaldata(){
 async function getDataById(id){
       try{
         
-          const response = await fetchDataById(id)
+          const response = await fetchDataByUrl(id)
         
         if(!response){
             throw new notFoundError()

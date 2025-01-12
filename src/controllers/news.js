@@ -5,7 +5,9 @@ async function addInfo(req, res){
 
     try{
         const files = req.files;
-        const data = req.body;
+        let data = req.body;
+        const url = data.url.replace(" ","-")
+        data = {...data, url:url}
         const response = await createContent(data, files);
         return res.status(201).json({
             success: true,
@@ -94,8 +96,8 @@ async function findInternationalData(req, res){
 async function findById(req, res){
 
     try{
-        const id = req.params.id;
-        const response = await getDataById(id);
+        const url = req.params.url;
+        const response = await getDataById(url);
         return res.status(201).json({
             success: true,
             message: 'Successfully fetch the information',

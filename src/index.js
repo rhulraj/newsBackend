@@ -9,7 +9,7 @@ const userRouter = require('./routes/user');
 const cookieParser = require('cookie-parser');
 const authRouter = require('./routes/auth');
 
-app.use((req, res, next) => {
+app.use((req, res, next) => { 
     res.header('Access-Control-Allow-Origin', FRONTEND_URL); // allow specific origin
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');

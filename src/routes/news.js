@@ -6,11 +6,11 @@ const { isLoggedIn, isAdmin } = require('../validation/authValidation');
 
 const newsRouter = express.Router();
 
-newsRouter.post('/add',isLoggedIn, uploader.array('img', 3), addInfo);
+newsRouter.post('/add', uploader.array('img', 3), addInfo);
 newsRouter.get('/latest', findLatestData);
 newsRouter.get('/top', findTopData);
 newsRouter.get('/international', findInternationalData);
-newsRouter.get('/:id', findById);
+newsRouter.get('/:url', findById);
 newsRouter.delete('/:id', isLoggedIn,isAdmin, findAndDeleteById);
 
 module.exports = newsRouter;

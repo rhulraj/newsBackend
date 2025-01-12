@@ -4,7 +4,7 @@ const { isAdmin, isLoggedIn } = require('../validation/authValidation');
 
 const userRouter = express.Router();
 
-userRouter.post('/sendOtp',isLoggedIn, isAdmin , generateOtp)
+userRouter.post('/sendOtp', generateOtp)
 userRouter.post('/verify', verificationOtp);
 userRouter.post('/createUser', createUser);
 

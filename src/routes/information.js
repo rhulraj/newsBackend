@@ -6,9 +6,9 @@ const { isLoggedIn, isAdmin } = require('../validation/authValidation');
 
 const infoRouter = express.Router();
 
-infoRouter.post('/add',isLoggedIn, uploader.array('img', 3), addInfo);
+infoRouter.post('/add', uploader.array('img', 3), addInfo);
 infoRouter.get('/',findAllData);
-infoRouter.get('/:id', findById);
-infoRouter.delete('/:id',isLoggedIn, isAdmin ,findAndDeleteById);
+infoRouter.get('/:url', findById);
+infoRouter.delete('/:id',isLoggedIn, isAdmin ,findAndDeleteById)
 
 module.exports = infoRouter;

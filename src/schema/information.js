@@ -23,6 +23,16 @@ const Schema = mongoose.Schema({
     },
     body3:{
         type :String
+    },
+    language:{
+        type: String,
+        enum : ['English', 'Hindi'],
+        default : 'Hindi'
+    },
+    url:{
+        type: String,
+        unique :[true, "url is already in use"],
+        required: true
     }
 
 

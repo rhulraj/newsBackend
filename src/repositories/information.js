@@ -25,11 +25,13 @@ async function fetchAllInfo(){
         throw new InternalServerError()
     }
 }
-async function fetchDataById(id){
+async function fetchDataByUrl(url){
     try{
-        const response = await information.findById(id);
+        
+        const response = await information.findOne({url});
         return response;
     }catch(error){
+        console.log(error)
         throw new InternalServerError();
     }
 }
@@ -44,6 +46,6 @@ async function deleteById(id){
 module.exports = {
     createInfo,
     fetchAllInfo,
-    fetchDataById,
+    fetchDataByUrl,
     deleteById
 }

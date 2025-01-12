@@ -13,7 +13,7 @@ async function sendOtp(userDetails){
     
     const user = await findUser(Email);
     if(user){
-        throw { message : 'User with the given email already exist', statusCode: 400}
+        throw { message : 'User with the given email already exist', status: 400}
     }
     const otp = generateOtp();
     await sendOTP(userDetails.email, otp);
